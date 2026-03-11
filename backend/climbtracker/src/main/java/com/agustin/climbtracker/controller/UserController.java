@@ -4,6 +4,9 @@ import com.agustin.climbtracker.model.User;
 import com.agustin.climbtracker.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import com.agustin.climbtracker.dto.UserStatsDTO;
+import com.agustin.climbtracker.service.StatsService;
+
 import java.util.List;
 
 @RestController
@@ -11,9 +14,11 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final StatsService statsService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, StatsService statsService) {
         this.userService = userService;
+        this.statsService = statsService;
     }
 
     @PostMapping
@@ -24,5 +29,15 @@ public class UserController {
     @GetMapping
     public List<User> getUsers() {
         return userService.getUsers();
+    }
+
+    @GetMapping("/{id}/stats")
+    public UserStatsDTO getUserStats(@PathVariable Long id) {
+        return statsService.getUserStats(id);
+    }
+
+    @GetMapping("/{id}")
+    public User getUser(@PathVariable Long id) {
+        return userService.getUserById(id);
     }
 }

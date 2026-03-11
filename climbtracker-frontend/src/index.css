@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== GLOBAL STYLES ===== */
+
+body {
+  margin: 0;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #020617;
+  color: rgb(64, 83, 132);
+}
+
+/* ===== HEATMAP STYLES ===== */
+
+.react-calendar-heatmap rect:hover {
+  stroke: #e2e8f0;
+  stroke-width: 1px;
+  cursor: pointer;
+}
+
+.react-calendar-heatmap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.heatmap-container h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.react-calendar-heatmap-month-label {
+  font-size: 7px !important;
+  fill: #b1b7c0 !important;
+  text-anchor: start !important;
+  text-anchor: start !important;
+  transform: translateX(8px); 
+}
+
+/* cuadrados del heatmap */
+.react-calendar-heatmap rect {
+  rx: 2px;
+  ry: 2px;
+  width: 9.5px;
+  height: 8.7px;
+  stroke: #0f172a;
+  stroke-width: 1px;
+}
+
+/* días sin actividad */
+.react-calendar-heatmap rect.color-empty {
+  fill: #1b2a4e;
+}
+
+/* intensidad de actividad */
+.react-calendar-heatmap .color-scale-1 {
+  fill: #14532d;
+}
+
+.react-calendar-heatmap .color-scale-2 {
+  fill: #16a34a;
+}
+
+.react-calendar-heatmap .color-scale-3 {
+  fill: #22c55e;
+}
+
+.react-calendar-heatmap .color-scale-4 {
+  fill: #4ade80;
+}
+
+/* texto del calendario (meses / días) */
+.react-calendar-heatmap text {
+  fill: #94a3b8;
+  font-size: 10px;
+}
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}

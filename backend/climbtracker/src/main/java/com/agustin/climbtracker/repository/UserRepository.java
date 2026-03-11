@@ -2,6 +2,7 @@ package com.agustin.climbtracker.repository;
 
 import com.agustin.climbtracker.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import com.agustin.climbtracker.repository.UserRepository;
 
 import java.util.Optional;
 
