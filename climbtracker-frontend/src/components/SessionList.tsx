@@ -12,15 +12,15 @@ function SessionList({ sessions, refreshSessions }: Props) {
 
   const [expandedSession, setExpandedSession] = useState<number | null>(null)
 
-  const handleDelete = (e: React.MouseEvent, id: number) => {
+  const handleDelete = async (e: React.MouseEvent, id: number) => {
 
-    e.preventDefault()
     e.stopPropagation()
+    e.preventDefault()
 
     const confirmed = window.confirm("Delete this session?")
     if (!confirmed) return
 
-    deleteSession(id)
+    await deleteSession(id)
     refreshSessions()
 
   }
@@ -61,7 +61,6 @@ function SessionList({ sessions, refreshSessions }: Props) {
           </div>
 
           <button
-            type="button"
             onClick={(e) => handleDelete(e, session.id)}
             className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-sm"
           >
